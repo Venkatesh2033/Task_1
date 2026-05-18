@@ -1,0 +1,62 @@
+# AI-Powered PDF Question Answering System
+# Technologies Used
+
+| Component | Technology |
+|---|---|
+| Frontend/UI | Streamlit |
+| PDF Parsing | PyPDF |
+| Embeddings | Sentence Transformers |
+| Vector Database | FAISS |
+| LLM | Groq API |
+| AI Model | Llama 3 |
+
+---
+
+# AI Approach Used
+
+The project uses Retrieval-Augmented Generation (RAG).
+
+Workflow:
+
+1. Upload PDF
+2. Extract text from PDF
+3. Split text into smaller chunks
+4. Generate embeddings using Sentence Transformers
+5. Store embeddings in FAISS vector database
+6. Retrieve relevant chunks for user questions
+7. Send only retrieved context to the LLM
+8. Generate grounded answers
+
+This ensures answers are generated strictly from the uploaded document.
+
+---
+
+# Prompt Design
+
+A strict system prompt is used:
+
+- Answer only from provided context
+- Do not use external knowledge
+- Do not guess
+- If answer is unavailable, return:
+  "Not available in document"
+
+Temperature is set to 0 to reduce hallucinations.
+
+---
+
+# Hallucination Prevention
+
+The following techniques were used:
+
+1. Retrieval-based answering (RAG)
+2. Strict prompt constraints
+3. Similarity threshold filtering
+4. Context-limited generation
+5. Temperature set to 0
+
+If no relevant document context is found, the system returns:
+
+"Not available in document"
+
+---
