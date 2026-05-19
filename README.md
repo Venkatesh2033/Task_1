@@ -151,16 +151,19 @@ Clone repository:
 git clone https://github.com/Venkatesh2033/Task_1.git
 
 
+
 Move into project folder:
 
 
 cd Task_1
 
 
+
 Install dependencies:
 
 
 pip install -r requirements.txt
+
 
 
 Run application:
