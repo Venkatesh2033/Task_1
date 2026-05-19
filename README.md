@@ -35,7 +35,7 @@ An intelligent document-based Question Answering system that allows users to upl
 
 The application follows a *Retrieval-Augmented Generation (RAG)* pipeline:
 
-text
+
 PDF Upload
      ↓
 Text Extraction
@@ -101,7 +101,7 @@ This ensures reliable and document-grounded outputs.
 
 A strict system prompt is designed to control model behavior:
 
-text
+
 Rules:
 • Answer only from provided context
 • Do not use external knowledge
@@ -113,7 +113,7 @@ Rules:
 
 Temperature:
 
-text
+
 Temperature = 0
 
 
@@ -146,19 +146,19 @@ Temperature set to 0 for deterministic output.
 
 *Question:*
 
-text
+
 What is the objective of this report?
 
 
 *Answer:*
 
-text
+
 The report objective is ...
 
 
 If information does not exist:
 
-text
+
 Not available in document
 
 
