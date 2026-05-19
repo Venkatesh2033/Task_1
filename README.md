@@ -13,7 +13,11 @@ An intelligent document-based Question Answering system that allows users to upl
 ✅ Hallucination reduction mechanisms  
 ✅ Fast retrieval using FAISS  
 ✅ Clean interactive UI with Streamlit  
-✅ Answers restricted to document content only  
+✅ Answers restricted to document content only
+✅ Source of the answer within the document is highlighted  
+✅ Shows Page Number References  
+✅ Maintains Chat History  
+✅ Supports Mutliple PDFs Handling  
 
 ---
 
