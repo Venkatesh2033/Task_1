@@ -147,25 +147,25 @@ Not available in document
 
 Clone repository:
 
-bash
+
 git clone https://github.com/Venkatesh2033/Task_1.git
 
 
 Move into project folder:
 
-bash
+
 cd Task_1
 
 
 Install dependencies:
 
-bash
+
 pip install -r requirements.txt
 
 
 Run application:
 
-bash
+
 streamlit run app.py
 
 
