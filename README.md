@@ -33,27 +33,59 @@ An intelligent document-based Question Answering system that allows users to upl
 
 ## 🧠 System Architecture
 
-The application follows a *Retrieval-Augmented Generation (RAG)* pipeline:
+The application follows a **Retrieval-Augmented Generation (RAG)** pipeline for document-grounded question answering.
 
-
-PDF Upload
-     ↓
-Text Extraction
-     ↓
-Text Chunking
-     ↓
-Embedding Generation
-     ↓
-Store in FAISS Vector Database
-     ↓
-User Question
-     ↓
-Similarity Search
-     ↓
-Retrieve Relevant Context
-     ↓
-LLM Response Generation
-
+```text
+┌────────────────────┐
+│   User Uploads PDF │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│  PDF Text Parsing  │
+│      (PyPDF)       │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│    Text Chunking   │
+│  Split into Chunks │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Embedding Creation │
+│Sentence Transformers│
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Vector Storage     │
+│      (FAISS)       │
+└─────────┬──────────┘
+          │
+          ▼
+        User Query
+          │
+          ▼
+┌────────────────────┐
+│ Similarity Search  │
+│ Retrieve Top Chunks│
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Context + Prompt   │
+│ Sent to Llama 3    │
+│    via Groq API    │
+└─────────┬──────────┘
+          │
+          ▼
+┌────────────────────┐
+│ Grounded Response  │
+│ Returned to User   │
+└────────────────────┘
+```
 
 ---
 
