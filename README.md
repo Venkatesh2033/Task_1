@@ -173,12 +173,3 @@ streamlit run app.py
 
 
 ---
-
-## Future Improvements
-
-- Multi-PDF comparison support
-- Chat history memory
-- OCR support for scanned PDFs
-- Citation generation
-- Hybrid retrieval techniques
-- Better chunking strategies
