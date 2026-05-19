@@ -10,9 +10,8 @@ from pypdf import PdfReader
 from sentence_transformers import SentenceTransformer
 
 
-# =========================================================
+
 # PAGE CONFIG
-# =========================================================
 
 st.set_page_config(
     page_title="PDF AI Assistant",
@@ -22,9 +21,9 @@ st.set_page_config(
 )
 
 
-# =========================================================
+
 # CUSTOM CSS
-# =========================================================
+
 
 st.markdown("""
 <style>
@@ -235,9 +234,9 @@ button[title="Remove file"] {
 """, unsafe_allow_html=True)
 
 
-# =========================================================
+
 # LOAD ENV
-# =========================================================
+
 
 load_dotenv()
 
@@ -251,9 +250,9 @@ if not GROQ_API_KEY:
     st.stop()
 
 
-# =========================================================
+
 # CONFIG
-# =========================================================
+
 
 MODEL_NAME = "llama-3.3-70b-versatile"
 
@@ -275,9 +274,9 @@ CHUNK_SIZE = 800
 CHUNK_OVERLAP = 120
 
 
-# =========================================================
+
 # INITIALIZE MODELS
-# =========================================================
+
 
 client = Groq(api_key=GROQ_API_KEY)
 
@@ -286,9 +285,8 @@ embedding_model = SentenceTransformer(
 )
 
 
-# =========================================================
+
 # SESSION STATE
-# =========================================================
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -306,9 +304,9 @@ if "uploader_key" not in st.session_state:
     st.session_state.uploader_key = 0
 
 
-# =========================================================
+
 # SIDEBAR
-# =========================================================
+
 
 with st.sidebar:
 
@@ -356,9 +354,9 @@ with st.sidebar:
             )
 
 
-# =========================================================
+
 # HEADER
-# =========================================================
+
 
 st.markdown("""
 <div class="main-title">
@@ -371,9 +369,8 @@ Ask intelligent questions from multiple PDF documents
 """, unsafe_allow_html=True)
 
 
-# =========================================================
 # PDF PROCESSING
-# =========================================================
+
 
 def extract_text_from_pdf(pdf_path, filename):
 
@@ -445,9 +442,9 @@ def create_vector_index(chunks):
     return index
 
 
-# =========================================================
+
 # RETRIEVAL
-# =========================================================
+
 
 def retrieve_chunks(question):
 
@@ -483,9 +480,9 @@ def retrieve_chunks(question):
     return relevant_chunks
 
 
-# =========================================================
+
 # ANSWER GENERATION
-# =========================================================
+
 
 def generate_answer(question, relevant_chunks):
 
@@ -550,9 +547,9 @@ Question:
     return answer
 
 
-# =========================================================
+
 # PROCESS PDFs
-# =========================================================
+
 
 if uploaded_files:
 
@@ -597,9 +594,9 @@ if uploaded_files:
             st.session_state.uploaded_docs = current_files
 
 
-# =========================================================
+
 # EMPTY STATE
-# =========================================================
+
 
 if st.session_state.vector_index is None:
 
@@ -610,9 +607,9 @@ if st.session_state.vector_index is None:
     """, unsafe_allow_html=True)
 
 
-# =========================================================
+
 # DISPLAY CHAT HISTORY
-# =========================================================
+
 
 for message in st.session_state.chat_history:
 
@@ -621,18 +618,18 @@ for message in st.session_state.chat_history:
         st.markdown(message["content"])
 
 
-# =========================================================
+
 # CHAT INPUT
-# =========================================================
+
 
 question = st.chat_input(
     "Ask something about your documents..."
 )
 
 
-# =========================================================
+
 # QUESTION PROCESSING
-# =========================================================
+
 
 if question:
 
